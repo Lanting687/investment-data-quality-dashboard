@@ -56,13 +56,23 @@ missing_rating["Status"] = "Open"
 
 missing_rating_exceptions = missing_rating[output_columns]
 
+
 # Rule 4: Missing Sector
+
+sector_optional_asset_classes = [
+    "Government Bond",
+    "Derivative",
+]
+
 missing_sector = securities[
-    securities["Sector"].isna()
+    ~securities["Asset_Class"].isin(sector_optional_asset_classes)
+    & securities["Sector"].isna()
 ].copy()
 
 missing_sector["Exception_Type"] = "Missing Sector"
-missing_sector["Exception_Description"] = "Sector is missing"
+missing_sector["Exception_Description"] = (
+    "Sector is missing for an asset class that requires sector classification"
+)
 missing_sector["Severity"] = "Medium"
 missing_sector["Status"] = "Open"
 
