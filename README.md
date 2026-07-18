@@ -1,7 +1,6 @@
 # Investment Data Quality Dashboard
 
-An interactive Tableau dashboard for monitoring investment data quality and exception management.
-Built using simulated investment reference data to demonstrate data quality monitoring and exception monitoring workflows.
+An interactive Tableau dashboard for monitoring investment data quality and exception management. Built with simulated investment reference data for portfolio demonstration purposes.
 
 ## Features
 
