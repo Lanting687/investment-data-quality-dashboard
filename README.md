@@ -16,6 +16,6 @@ An interactive Tableau dashboard for monitoring investment data quality and exce
 - Git
 - GitHub
 
-## Dashboard
+## Dashboard Preview
 
 ![Dashboard](investment_data_quality_dashboard.png)
