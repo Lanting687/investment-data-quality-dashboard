@@ -108,9 +108,19 @@ exceptions.to_excel(
     index=False
 )
 
-print(f"Generated {len(exceptions)} exceptions.")
-print()
-print(exceptions["Exception_Type"].value_counts())
+print(f"Generated {len(exceptions)} exception records.")
+
+total_unique_securities = exceptions["Security_ID"].nunique()
+
+print(f"Total unique securities with exceptions: {total_unique_securities}")
+
+print("\nUnique securities by exception type:")
+print(
+    exceptions.groupby("Exception_Type")["Security_ID"]
+    .nunique()
+    .sort_values(ascending=False)
+)
+
 print()
 print(f"Saved to: {output_file}")
 
