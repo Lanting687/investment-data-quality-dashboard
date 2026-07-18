@@ -1141,7 +1141,7 @@
             <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[min:Age_Days:qk]&quot;' user:op='manual' />
           </filter>
           <filter class='categorical' column='[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[Action (Exception Type)]'>
-            <groupfilter function='member' level='[Exception_Type]' member='&quot;Stale Record&quot;' user:ui-action-filter='[Action1_90A0C9124C8D4C449845AE7E73A15F5A]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Exception_Type]' member='&quot;Duplicate Record&quot;' user:ui-action-filter='[Action1_90A0C9124C8D4C449845AE7E73A15F5A]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[:Measure Names]</column>
@@ -1186,7 +1186,7 @@
             <column-instance column='[Status (Exceptions)]' derivation='None' name='[none:Status (Exceptions):nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[Action (Exception Type)]'>
-            <groupfilter function='member' level='[Exception_Type]' member='&quot;Stale Record&quot;' user:ui-action-filter='[Action1_90A0C9124C8D4C449845AE7E73A15F5A]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Exception_Type]' member='&quot;Duplicate Record&quot;' user:ui-action-filter='[Action1_90A0C9124C8D4C449845AE7E73A15F5A]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <shelf-sorts>
             <shelf-sort-v2 dimension-to-sort='[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[none:Status (Exceptions):nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[ctd:Exception_ID:qk]' shelf='rows' />
@@ -1231,7 +1231,7 @@
             <column-instance column='[Status (Exceptions)]' derivation='None' name='[none:Status (Exceptions):nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[Action (Exception Type)]'>
-            <groupfilter function='member' level='[Exception_Type]' member='&quot;Stale Record&quot;' user:ui-action-filter='[Action1_90A0C9124C8D4C449845AE7E73A15F5A]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Exception_Type]' member='&quot;Duplicate Record&quot;' user:ui-action-filter='[Action1_90A0C9124C8D4C449845AE7E73A15F5A]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[none:Status (Exceptions):nk]'>
             <groupfilter function='member' level='[none:Status (Exceptions):nk]' member='&quot;Open&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
@@ -1397,7 +1397,7 @@
             <column-instance column='[Opened_Date]' derivation='Month' name='[mn:Opened_Date:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[Action (Exception Type)]'>
-            <groupfilter function='member' level='[Exception_Type]' member='&quot;Stale Record&quot;' user:ui-action-filter='[Action1_90A0C9124C8D4C449845AE7E73A15F5A]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Exception_Type]' member='&quot;Duplicate Record&quot;' user:ui-action-filter='[Action1_90A0C9124C8D4C449845AE7E73A15F5A]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.0bwnc9y05v7vqj179gzqv0dhh2pm].[Action (Exception Type)]</column>
@@ -1541,7 +1541,7 @@
                 </zone-style>
               </zone>
               <zone h='28866' id='19' name='Exceptions by Status' w='47848' x='51537' y='21135'>
-                <layout-cache fixed-size-h='103' minwidth='200' type-h='fixed' type-w='scalable' />
+                <layout-cache fixed-size-h='83' minwidth='200' type-h='fixed' type-w='scalable' />
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
