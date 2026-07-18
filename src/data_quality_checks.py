@@ -9,16 +9,18 @@ securities = pd.read_excel(
     sheet_name="Securities"
 )
 
+securities["Last_Updated_Date"] = pd.to_datetime(securities["Last_Updated_Date"], errors="coerce")
+
 output_columns = [
     "Security_ID",
     "Ticker",
     "Security_Name",
+    "Last_Updated_Date",
     "Exception_Type",
     "Exception_Description",
     "Severity",
     "Status",
 ]
-
 
 # Rule 1: Missing ISIN
 missing_isin = securities[securities["ISIN"].isna()].copy()
@@ -29,7 +31,6 @@ missing_isin["Severity"] = "Medium"
 missing_isin["Status"] = "Open"
 
 missing_isin_exceptions = missing_isin[output_columns]
-
 
 # Rule 2: Missing Currency
 missing_currency = securities[
@@ -43,7 +44,6 @@ missing_currency["Status"] = "Open"
 
 missing_currency_exceptions = missing_currency[output_columns]
 
-
 # Rule 3: Missing Credit Rating
 missing_rating = securities[
     securities["Credit_Rating"].isna()
@@ -55,7 +55,6 @@ missing_rating["Severity"] = "Medium"
 missing_rating["Status"] = "Open"
 
 missing_rating_exceptions = missing_rating[output_columns]
-
 
 # Rule 4: Missing Sector
 missing_sector = securities[
@@ -69,6 +68,26 @@ missing_sector["Status"] = "Open"
 
 missing_sector_exceptions = missing_sector[output_columns]
 
+# Rule 5: Stale record (last updated date older than 90 days)
+
+today = pd.Timestamp.today().normalize()
+stale_threshold_days = 90
+
+stale_records = securities[
+    securities["Last_Updated_Date"].notna()
+    & (
+        today - securities["Last_Updated_Date"]
+    ).dt.days.gt(stale_threshold_days)
+].copy()
+
+stale_records["Exception_Type"] = "Stale Record"
+stale_records["Exception_Description"] = (
+    "Record has not been updated for more than 90 days"
+)
+stale_records["Severity"] = "Medium"
+stale_records["Status"] = "Open"
+
+stale_record_exceptions = stale_records[output_columns]
 
 # Combine all exceptions
 exceptions = pd.concat(
@@ -77,6 +96,7 @@ exceptions = pd.concat(
         missing_currency_exceptions,
         missing_rating_exceptions,
         missing_sector_exceptions,
+        stale_record_exceptions,
     ],
     ignore_index=True
 )
@@ -93,3 +113,6 @@ print()
 print(exceptions["Exception_Type"].value_counts())
 print()
 print(f"Saved to: {output_file}")
+
+
+
