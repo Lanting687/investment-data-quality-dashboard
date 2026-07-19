@@ -47,3 +47,13 @@ def stale_records(securities):
             today - securities["Last_Updated_Date"]
         ).dt.days.gt(config.STALE_THRESHOLD_DAYS)
     ].copy()
+
+
+# Rule 6: Duplicate Record (same ISIN shared by more than one security)
+def duplicate_isin(securities):
+    # keep=False marks every row that shares its ISIN with another row,
+    # not just the second occurrence onward.
+    return securities[
+        securities["ISIN"].notna()
+        & securities["ISIN"].duplicated(keep=False)
+    ].copy()

@@ -51,6 +51,13 @@ def build_exceptions(securities):
         "Medium",
     )
 
+    duplicate_record_exceptions = _to_exceptions(
+        rules.duplicate_isin(securities),
+        "Duplicate Record",
+        "ISIN is shared with another security",
+        "High",
+    )
+
     exceptions = pd.concat(
         [
             missing_isin_exceptions,
@@ -58,6 +65,7 @@ def build_exceptions(securities):
             missing_rating_exceptions,
             missing_sector_exceptions,
             stale_record_exceptions,
+            duplicate_record_exceptions,
         ],
         ignore_index=True
     )
